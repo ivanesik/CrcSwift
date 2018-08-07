@@ -10,6 +10,7 @@
 		8485512D20FC916000EADA73 /* CrcSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485512C20FC916000EADA73 /* CrcSwift.swift */; };
 		8485513A20FC91C100EADA73 /* CrcSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485513920FC91C100EADA73 /* CrcSwiftTests.swift */; };
 		8485513C20FC91C100EADA73 /* libCrcSwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8485512920FC916000EADA73 /* libCrcSwift.a */; };
+		84ED3FA3210AF6D6008B6DC5 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED3FA2210AF6D6008B6DC5 /* Enums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		8485513720FC91C100EADA73 /* CrcSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrcSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8485513920FC91C100EADA73 /* CrcSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrcSwiftTests.swift; sourceTree = "<group>"; };
 		8485513B20FC91C100EADA73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84ED3FA2210AF6D6008B6DC5 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		8485512B20FC916000EADA73 /* CrcSwift */ = {
 			isa = PBXGroup;
 			children = (
+				84ED3FA1210AF6C0008B6DC5 /* Model */,
 				8485512C20FC916000EADA73 /* CrcSwift.swift */,
 			);
 			path = CrcSwift;
@@ -94,6 +97,14 @@
 				8485513B20FC91C100EADA73 /* Info.plist */,
 			);
 			path = CrcSwiftTests;
+			sourceTree = "<group>";
+		};
+		84ED3FA1210AF6C0008B6DC5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84ED3FA2210AF6D6008B6DC5 /* Enums.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84ED3FA3210AF6D6008B6DC5 /* Enums.swift in Sources */,
 				8485512D20FC916000EADA73 /* CrcSwift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
