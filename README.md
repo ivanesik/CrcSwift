@@ -9,6 +9,7 @@ ____
 
 ## Summary
 This library create for easy generate Crc checksum
+For validation used http://crccalc.com
 
 ## Features 
 CRC16 calculation
