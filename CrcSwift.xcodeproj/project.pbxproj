@@ -41,6 +41,7 @@
 		8485513720FC91C100EADA73 /* CrcSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrcSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8485513920FC91C100EADA73 /* CrcSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrcSwiftTests.swift; sourceTree = "<group>"; };
 		8485513B20FC91C100EADA73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		848FFB522164B91A0018AD36 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		84ED3FA2210AF6D6008B6DC5 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +70,7 @@
 				8485512B20FC916000EADA73 /* CrcSwift */,
 				8485513820FC91C100EADA73 /* CrcSwiftTests */,
 				8485512A20FC916000EADA73 /* Products */,
+				848FFB522164B91A0018AD36 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -157,9 +159,11 @@
 				TargetAttributes = {
 					8485512820FC916000EADA73 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1000;
 					};
 					8485513620FC91C100EADA73 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -342,7 +346,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -355,7 +359,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -373,7 +377,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = IE.CrcSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -391,7 +395,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = IE.CrcSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

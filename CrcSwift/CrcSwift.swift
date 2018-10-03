@@ -57,7 +57,7 @@ class CrcSwift {
     }
     
     
-    func calcCrc16(_ data: [UInt8], mode: CRC16_TYPE = .def) -> UInt16 {
+    func calcCrc16(_ data: [UInt8], mode: CRC16_TYPE = .ccittFalse) -> UInt16 {
         
         var polynomial: UInt16 = 0xA001 // A001 is the bit reverse of 8005
         var crc: UInt16 = 0x0000
@@ -69,12 +69,10 @@ class CrcSwift {
             refIn = true
         }
         
-        if mode == .ccittFalse || mode == .genibus {
+        if mode == .ccittFalse || mode == .genibus || mode == .augCcitt || mode == .xmodem {
             polynomial = 0x1021
         } else if mode == .arc || mode == .maxim || mode == .usb || mode == .modbus {
             polynomial = 0xA001 // is the bit reverse of 8005
-        } else if mode == .augCcitt || mode == .xmodem {
-            polynomial = 0x1021
         } else if mode == .buypass || mode == .dds110 {
             polynomial = 0x8005
         } else if mode == .cdma2000 {
@@ -117,13 +115,20 @@ class CrcSwift {
         
         for byte in data {
             var tempByte = UInt16(byte)
+            if !refIn {
+                crc ^= tempByte << 8;
+            }
             for _ in 0 ..< 8 {
-                let temp1 = crc & 0x0001
-                crc = crc >> 1
-                let temp2 = tempByte & 0x0001
-                tempByte = tempByte >> 1
-                if (temp1 ^ temp2) == 1 {
-                    crc = crc ^ polynomial
+                if refIn {
+                    let temp1 = crc & 0x0001
+                    crc = crc >> 1
+                    let temp2 = tempByte & 0x0001
+                    tempByte = tempByte >> 1
+                    if (temp1 ^ temp2) == 1 {
+                        crc = crc ^ polynomial
+                    }
+                } else {
+                    crc = (crc & UInt16(0x8000)) != 0 ? (crc << 1) ^ polynomial : crc << 1
                 }
             }
         }

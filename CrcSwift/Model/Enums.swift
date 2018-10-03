@@ -28,7 +28,6 @@ enum CRC8_TYPE {
 }
 
 enum CRC16_TYPE {
-    case def
     case ccittFalse
     case arc
     case augCcitt
