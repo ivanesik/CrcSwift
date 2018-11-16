@@ -60,6 +60,7 @@ enum CRC32_TYPE {
     case d
     case mpeg2
     case posix
+    case q
     case jamcrc
     case xfer
 }

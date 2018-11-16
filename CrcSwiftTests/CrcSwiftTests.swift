@@ -30,6 +30,42 @@ class CrcSwiftTests: XCTestCase {
         let rightCrc: UInt8 = 0x78
         let crc = crcCalc.calcCrc8(data, mode: .def)
         XCTAssertEqual(crc, rightCrc)
+        
+        let rightCrcCdma2000: UInt8 = 0xbe
+        let crcCdma2000 = crcCalc.calcCrc8(data, mode: .cdma2000)
+        XCTAssertEqual(crcCdma2000, rightCrcCdma2000)
+        
+        let rightCrcDarc: UInt8 = 0x59
+        let crcDarc = crcCalc.calcCrc8(data, mode: .darc)
+        XCTAssertEqual(crcDarc, rightCrcDarc)
+        
+        let rightCrcDvbs2: UInt8 = 0xa5
+        let crcDvbs2 = crcCalc.calcCrc8(data, mode: .dvbS2)
+        XCTAssertEqual(crcDvbs2, rightCrcDvbs2)
+        
+        let rightCrcEbu: UInt8 = 0xbc
+        let crcEbu = crcCalc.calcCrc8(data, mode: .ebu)
+        XCTAssertEqual(crcEbu, rightCrcEbu)
+        
+        let rightICode: UInt8 = 0x1a
+        let crcICode = crcCalc.calcCrc8(data, mode: .iCode)
+        XCTAssertEqual(crcICode, rightICode)
+        
+        let rightCrcItu: UInt8 = 0x2d
+        let crcItu = crcCalc.calcCrc8(data, mode: .itu)
+        XCTAssertEqual(crcItu, rightCrcItu)
+        
+        let rightCrcMaxim: UInt8 = 0x55
+        let crcMaxim = crcCalc.calcCrc8(data, mode: .maxim)
+        XCTAssertEqual(crcMaxim, rightCrcMaxim)
+        
+        let rightCrcRohc: UInt8 = 0xca
+        let crcRohc = crcCalc.calcCrc8(data, mode: .rohc)
+        XCTAssertEqual(crcRohc, rightCrcRohc)
+        
+        let rightCrcWcdma: UInt8 = 0x9a
+        let crcWcdma = crcCalc.calcCrc8(data, mode: .wcdma)
+        XCTAssertEqual(crcWcdma, rightCrcWcdma)
     }
     
     func testCrc16() {
@@ -124,6 +160,51 @@ class CrcSwiftTests: XCTestCase {
         let rightCrcXmodem: UInt16 = 0xA982
         let crcXmodem = crcCalc.calcCrc16(data, mode: .xmodem)
         XCTAssertEqual(crcXmodem, rightCrcXmodem)
+    }
+    
+    
+    func testCrc32() {
+        let rightCrc: UInt32 = 0x5DF22E26
+        let crc = crcCalc.calcCrc32(data, mode: .def)
+        XCTAssertEqual(crc, rightCrc)
+        
+        let rightCrcBzip2: UInt32 = 0x8D18FA76
+        let crcBzip2 = crcCalc.calcCrc32(data, mode: .bzip2)
+        XCTAssertEqual(crcBzip2, rightCrcBzip2)
+        
+        let rightCrcC: UInt32 = 0x2DBDD765
+        let crcC = crcCalc.calcCrc32(data, mode: .c)
+        XCTAssertEqual(crcC, rightCrcC)
+        
+        let rightCrcD: UInt32 = 0x73C1A102
+        let crcD = crcCalc.calcCrc32(data, mode: .d)
+        XCTAssertEqual(crcD, rightCrcD)
+        
+        let rightCrcMpeg2: UInt32 = 0x72E70589
+        let crcMpeg2 = crcCalc.calcCrc32(data, mode: .mpeg2)
+        XCTAssertEqual(crcMpeg2, rightCrcMpeg2)
+        
+        let rightCrcPosix: UInt32 = 0x8484AE57
+        let crcPosix = crcCalc.calcCrc32(data, mode: .posix)
+        XCTAssertEqual(crcPosix, rightCrcPosix)
+        
+        let rightCrcQ: UInt32 = 0xE65B47E4
+        let crcQ = crcCalc.calcCrc32(data, mode: .q)
+        XCTAssertEqual(crcQ, rightCrcQ)
+        
+        let rightCrcJamcrc: UInt32 = 0x3372
+        let crcJamcrc = crcCalc.calcCrc32(data, mode: .jamcrc)
+        XCTAssertEqual(crcJamcrc, rightCrcJamcrc)
+        
+        let rightCrcXfer: UInt32 = 0xEEF9
+        let crcXfer = crcCalc.calcCrc32(data, mode: .xfer)
+        XCTAssertEqual(crcXfer, rightCrcXfer)
+        
+    }
+    
+    
+    func testTemp() {
+        let result = crcCalc.generateCrc8Table(poly: 0x98)
     }
 
     
