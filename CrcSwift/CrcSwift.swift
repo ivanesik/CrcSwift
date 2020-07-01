@@ -43,17 +43,17 @@ class CrcSwift {
         let refOut: Bool = (mode == .darc || mode == .ebu || mode == .maxim || mode == .rohc || mode == .wcdma)
         
         if mode == .def || mode == .itu || mode == .rohc {
-            polynomial = 0x07 // 0xe0
+            polynomial = 0x07
         } else if mode == .cdma2000 || mode == .wcdma {
-            polynomial = 0x9B // 0xd9
+            polynomial = 0x9B
         } else if mode == .darc {
-            polynomial = 0x39 // 0x9c
+            polynomial = 0x39
         } else if mode == .dvbS2 {
             polynomial = 0xd5
         } else if mode == .ebu || mode == .iCode {
-            polynomial = 0x1d // 0xb8
+            polynomial = 0x1d
         } else if mode == .maxim {
-            polynomial = 0x31 // 0x8c
+            polynomial = 0x31
         }
         
         if mode == .def || mode == .darc || mode == .dvbS2 || mode == .itu || mode == .maxim || mode == .wcdma {

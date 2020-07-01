@@ -12,6 +12,19 @@ This library create for easy generate Crc checksum
 For validation used http://crccalc.com
 
 ## Features 
+
+CRC8
+-  def
+- cdma2000
+- darc
+- dvbS2
+- ebu
+- iCode
+- itu
+- maxim
+- rohc
+- wcdma
+
 CRC16 calculation
 -  CCITT-False
 - ARC
@@ -41,17 +54,16 @@ Download repository and add CrcSwift folder in your project
 
 Crc generation
 ```swift
-var crcCalc = CrcSwift()
 var data: [UInt8] = [0xA4, 0x01, 0x00, 0x0A, 0xFF, 0x06, 0x11, 0x01, 0x01, 0x13, 0x00, 0xD3] // A401000AFF061101011300D3
-let crcModbus = crcCalc.calcCrc16(data, mode: .modbus)
+let crcModbus = CrcSwift.calcCrc16(data, mode: .modbus)
 print(crcModbus) //0x71CA
 
-let crcUsb = crcCalc.calcCrc16(data, mode: .usb)
+let crcUsb = CrcSwift.calcCrc16(data, mode: .usb)
 print(crcUsb) //0x8E35
 ```
 
 ## TODO
-- CRC8, CRC32
+- CRC32
 - CRC16 - RIELLO, TMS37157, A
 
 
