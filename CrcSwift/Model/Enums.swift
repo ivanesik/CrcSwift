@@ -32,14 +32,14 @@ enum CRC16_TYPE {
     case arc
     case augCcitt
     case buypass
-    case cdma2000 //crc8
+    case cdma2000
     case dds110
     case dectR
     case dectX
     case dnp
     case en13757
     case genibus
-    case maxim // crc8
+    case maxim
     case mcrf4xx
     case riello
     case t10dif
