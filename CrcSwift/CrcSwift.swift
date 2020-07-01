@@ -32,16 +32,6 @@ class CrcSwift {
         return UInt8(revBinaryString, radix: 2) ?? 0
     }
     
-    static func crc8_table(_ data: [UInt8]) -> UInt8 {
-        let table = generateCrc8Table()
-        
-        var crc8:UInt8 = 0x00
-        for i in 0..<data.count {
-            crc8 = table[ Int(crc8 ^ data[i]) ]
-        }
-        return crc8
-    }
-    
     /**
      Crc8 caluculator
      */

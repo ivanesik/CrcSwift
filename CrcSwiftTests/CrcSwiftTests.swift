@@ -24,13 +24,7 @@ class CrcSwiftTests: XCTestCase {
         crcCalc = nil
         super.tearDown()
     }
-    
-    func testCrc8_table() {
-        let rightCrc: UInt8 = 0x78
-        let crc = CrcSwift.crc8_table(data)
-        XCTAssertEqual(crc, rightCrc)
-    }
-    
+
     func testCrc8() {
         let rightCrc: UInt8 = 0x78
         let crc = CrcSwift.calcCrc8(data, mode: .def)
