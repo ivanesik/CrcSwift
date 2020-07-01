@@ -67,12 +67,6 @@ class CrcSwiftTests: XCTestCase {
         XCTAssertEqual(crcWcdma, rightCrcWcdma)
     }
     
-    func test123() {
-        let rightCrcArc: UInt16 = 0x73AE
-        let crcArc = CrcSwift.calcCrc16(data, mode: .arc)
-        XCTAssertEqual(crcArc, rightCrcArc)
-    }
-    
     func testCrc16() {
         let rightCrcCcittFalse: UInt16 = 0x2D7B
         let crcCcittFalse = CrcSwift.calcCrc16(data, mode: .ccittFalse)

@@ -90,15 +90,28 @@ class CrcSwift {
         let polynom = refOut ? reverseBites(polynomial) : polynomial;
         
         for var byte in data {
+            if !refIn {
+                crc ^= byte;
+            }
+            
             for _ in 0 ..< 8 {
-                let mix = (crc ^ byte) & 0x01
-                crc >>= 1
-                
-                if mix != 0 {
-                     crc ^= polynom
+                if refIn {
+                    let check = (crc ^ byte) & 0x01
+                    crc >>= 1
+                    
+                    if check != 0 {
+                         crc ^= polynom
+                    }
+                    
+                    byte >>= 1
+                } else {
+                    let check = crc & 0x80
+                    crc <<= 1
+                    
+                    if check != 0 {
+                        crc ^= polynom
+                    }
                 }
-                
-                byte >>= 1
             }
         }
 
@@ -181,15 +194,21 @@ class CrcSwift {
             }
             for _ in 0 ..< 8 {
                 if refIn {
-                    let temp1 = crc & 0x0001
-                    crc = crc >> 1
-                    let temp2 = tempByte & 0x0001
-                    tempByte = tempByte >> 1
-                    if (temp1 ^ temp2) == 1 {
-                        crc = crc ^ polynom
+                    let check1 = crc & 0x0001
+                    let check2 = tempByte & 0x0001
+                    crc >>= 1
+                    tempByte >>= 1
+                    
+                    if (check1 ^ check2) == 1 {
+                        crc ^= polynom
                     }
                 } else {
-                    crc = (crc & UInt16(0x8000)) != 0 ? (crc << 1) ^ polynom : crc << 1
+                    let check = crc & 0x8000
+                    crc <<= 1
+                    
+                    if check != 0 {
+                        crc ^= polynom
+                    }
                 }
             }
         }
