@@ -95,7 +95,7 @@ class CrcSwift {
                 crc >>= 1
                 
                 if mix != 0 {
-                     crc ^= polynom // 0x8C
+                     crc ^= polynom
                 }
                 
                 byte >>= 1
@@ -231,26 +231,4 @@ class CrcSwift {
         let result = crc ^ xor
         return result
     }
-    
-    
-    
-    
-    static func generateCrc8Table(poly: Int = 0x07, mask: Int = 0xff) -> [UInt8] {
-        var table: [UInt8] = Array.init(repeating: UInt8(0), count: 256)
-        
-        for i in 0..<table.count {
-            var c = i
-            for _ in 0..<8 {
-                if c & 0x80 != 0 {
-                    c = (((c << 1) & mask) ^ poly)
-                } else {
-                    c <<= 1
-                }
-            }
-            table[i] = UInt8(c)
-        }
-        
-        return table
-    }
-    
 }
