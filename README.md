@@ -46,6 +46,9 @@ CRC16 calculation
 - MODBUS
 - X-25
 - XMODEM
+- RIELLO
+- TMS37157
+- A
 
 ## Installation
 Download repository and add CrcSwift folder in your project 
@@ -64,8 +67,6 @@ print(crcUsb) //0x8E35
 
 ## TODO
 - CRC32
-- CRC16 - RIELLO, TMS37157, A
-
 
 ## License
 
