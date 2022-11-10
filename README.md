@@ -8,8 +8,7 @@ In development statement
 ____
 
 ## Summary
-This library create for easy generate Crc checksum
-For validation used http://crccalc.com
+Easy generate Crc checksum in Swift. Validated by http://crccalc.com
 
 ## Features 
 
