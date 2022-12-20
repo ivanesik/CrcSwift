@@ -18,9 +18,11 @@ struct Check<T, Y> {
 
 class CrcSwiftTests: XCTestCase {
     
-    static let data: [UInt8] = [0xA4, 0x01, 0x00, 0x0A, 0xFF, 0x06, 0x11, 0x01, 0x01, 0x13, 0x00, 0xD3] // A401000AFF061101011300D3
-    let checks8: [Check<CRC8_TYPE, UInt8>] = [
-        Check(mode: .def, data: data, result: 0x78),
+    // A401000AFF061101011300D3
+    static let data: [UInt8] = [0xA4, 0x01, 0x00, 0x0A, 0xFF, 0x06, 0x11, 0x01, 0x01, 0x13, 0x00, 0xD3]
+
+    let caseCrc8: [Check<CRC8_TYPE, UInt8>] = [
+        Check(mode: .defaultCrc, data: data, result: 0x78),
         Check(mode: .cdma2000, data: data, result: 0xbe),
         Check(mode: .darc, data: data, result: 0x59),
         Check(mode: .dvbS2, data: data, result: 0xa5),
@@ -32,8 +34,7 @@ class CrcSwiftTests: XCTestCase {
         Check(mode: .wcdma, data: data, result: 0x9a),
     ]
     
-    let checks16: [Check<CRC16_TYPE, UInt16>] = [
-        // refIn | refOut = true
+    let caseCrc16: [Check<CRC16_TYPE, UInt16>] = [
         Check(mode: .ccittFalse, data: data, result: 0x2D7B),
         Check(mode: .augCcitt, data: data, result: 0x00e8),
         Check(mode: .buypass, data: data, result: 0x80F1),
@@ -46,8 +47,6 @@ class CrcSwiftTests: XCTestCase {
         Check(mode: .t10dif, data: data, result: 0xFE08),
         Check(mode: .teledisk, data: data, result: 0x6ECE),
         Check(mode: .xmodem, data: data, result: 0xA982),
-        
-        // refIn | refOut = false
         Check(mode: .arc, data: data, result: 0x73AE),
         Check(mode: .dnp, data: data, result: 0xEEF9),
         Check(mode: .maxim, data: data, result: 0x8C51),
@@ -61,80 +60,37 @@ class CrcSwiftTests: XCTestCase {
         Check(mode: .x25, data: data, result: 0x241E),
     ]
     
+    let caseCrc32: [Check<CRC32_TYPE, UInt32>] = [
+        Check(mode: .defaultCrc, data: data, result: 0x5DF22E26),
+        Check(mode: .bzip2, data: data, result: 0x8D18FA76),
+        Check(mode: .c, data: data, result: 0x2DBDD765),
+        Check(mode: .d, data: data, result: 0x73C1A102),
+        Check(mode: .mpeg2, data: data, result: 0x72E70589),
+        Check(mode: .posix, data: data, result: 0x8484AE57),
+        Check(mode: .sata, data: data, result: 0xBD56103C),
+        Check(mode: .q, data: data, result: 0xE65B47E4),
+        Check(mode: .jamcrc, data: data, result: 0xA20DD1D9),
+        Check(mode: .xfer, data: data, result: 0x3297F930)
+    ]
     
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
-
     func testCrc8() {
-        for check in checks8 {
+        for check in caseCrc8 {
             let crc = CrcSwift.calcCrc8(check.data, mode: check.mode)
             XCTAssertEqual(crc, check.result)
         }
     }
     
     func testCrc16() {
-        for check in checks16 {
+        for check in caseCrc16 {
             let crc = CrcSwift.calcCrc16(check.data, mode: check.mode)
             XCTAssertEqual(crc, check.result)
         }
     }
     
-//    func testCrc162() {
-//        let rightCrcA_2: UInt16 = 0x2EEB
-//        let crcA_2 = CrcSwift.calcCrc16(
-//            data,// [0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17],
-//            initialCrc: 0x89EC,
-//            polynomial: 0x1021,
-//            xor: 0x0000,
-//            refIn: true,
-//            refOut: true
-//        )
-//        print(String(crcA_2, radix: 16))
-//        XCTAssertEqual(crcA_2, rightCrcA_2)
-//    }
-//
-//
-//    func testCrc32() {
-//        let rightCrc: UInt32 = 0x5DF22E26
-//        let crc = CrcSwift.calcCrc32(data, mode: .def)
-//        XCTAssertEqual(crc, rightCrc)
-//
-//        let rightCrcBzip2: UInt32 = 0x8D18FA76
-//        let crcBzip2 = CrcSwift.calcCrc32(data, mode: .bzip2)
-//        XCTAssertEqual(crcBzip2, rightCrcBzip2)
-//
-//        let rightCrcC: UInt32 = 0x2DBDD765
-//        let crcC = CrcSwift.calcCrc32(data, mode: .c)
-//        XCTAssertEqual(crcC, rightCrcC)
-//
-//        let rightCrcD: UInt32 = 0x73C1A102
-//        let crcD = CrcSwift.calcCrc32(data, mode: .d)
-//        XCTAssertEqual(crcD, rightCrcD)
-//
-//        let rightCrcMpeg2: UInt32 = 0x72E70589
-//        let crcMpeg2 = CrcSwift.calcCrc32(data, mode: .mpeg2)
-//        XCTAssertEqual(crcMpeg2, rightCrcMpeg2)
-//
-//        let rightCrcPosix: UInt32 = 0x8484AE57
-//        let crcPosix = CrcSwift.calcCrc32(data, mode: .posix)
-//        XCTAssertEqual(crcPosix, rightCrcPosix)
-//
-//        let rightCrcQ: UInt32 = 0xE65B47E4
-//        let crcQ = CrcSwift.calcCrc32(data, mode: .q)
-//        XCTAssertEqual(crcQ, rightCrcQ)
-//
-//        let rightCrcJamcrc: UInt32 = 0x3372
-//        let crcJamcrc = CrcSwift.calcCrc32(data, mode: .jamcrc)
-//        XCTAssertEqual(crcJamcrc, rightCrcJamcrc)
-//
-//        let rightCrcXfer: UInt32 = 0xEEF9
-//        let crcXfer = CrcSwift.calcCrc32(data, mode: .xfer)
-//        XCTAssertEqual(crcXfer, rightCrcXfer)
-//
-//    }
+    func testCrc32() {
+        for check in caseCrc32 {
+            let crc = CrcSwift.calcCrc32(check.data, mode: check.mode)
+            XCTAssertEqual(crc, check.result)
+        }
+    }
 }
