@@ -77,6 +77,9 @@ class CrcSwiftTests: XCTestCase {
         for check in caseCrc8 {
             let crc = CrcSwift.computeCrc8(check.data, mode: check.mode)
             XCTAssertEqual(crc, check.result)
+            
+            let crcFromData = CrcSwift.computeCrc8(Data(check.data), mode: check.mode)
+            XCTAssertEqual(crcFromData, check.result)
         }
     }
     
@@ -84,6 +87,9 @@ class CrcSwiftTests: XCTestCase {
         for check in caseCrc16 {
             let crc = CrcSwift.computeCrc16(check.data, mode: check.mode)
             XCTAssertEqual(crc, check.result)
+            
+            let crcFromData = CrcSwift.computeCrc16(Data(check.data), mode: check.mode)
+            XCTAssertEqual(crcFromData, check.result)
         }
     }
     
@@ -91,6 +97,9 @@ class CrcSwiftTests: XCTestCase {
         for check in caseCrc32 {
             let crc = CrcSwift.computeCrc32(check.data, mode: check.mode)
             XCTAssertEqual(crc, check.result)
+            
+            let crcFromData = CrcSwift.computeCrc32(Data(check.data), mode: check.mode)
+            XCTAssertEqual(crcFromData, check.result)
         }
     }
 }

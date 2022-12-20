@@ -9,6 +9,13 @@
 import Foundation
 
 class DataHelper {
+    static func convertDataToByteArray(_ data: Data) -> [UInt8] {
+        var array = [UInt8]()
+        array.append(contentsOf: data)
+        
+        return array
+    }
+    
     static func reverseBits(_ data: UInt8) -> UInt8 {
         var binaryString = String(data, radix: 2)
         binaryString = String(repeating: "0", count: 8 - binaryString.count) + binaryString

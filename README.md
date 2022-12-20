@@ -75,18 +75,20 @@ Package installation in plans.
 Crc generation
 ```swift
 // A401000AFF061101011300D3
-var data: [UInt8] = [0xA4, 0x01, 0x00, 0x0A, 0xFF, 0x06, 0x11, 0x01, 0x01, 0x13, 0x00, 0xD3]
+var dataArray: [UInt8] = [0xA4, 0x01, 0x00, 0x0A, 0xFF, 0x06, 0x11, 0x01, 0x01, 0x13, 0x00, 0xD3]
+var data = Data(dataArray)
 
-let crc8cdma = CrcSwift.computeCrc8(data, mode: .cdma2000)
-print(crc8cdma) // 0xbe
 
-let crc16Modbus = CrcSwift.computeCrc16(data, mode: .modbus)
-print(crc16Modbus) // 0x71CA
+CrcSwift.computeCrc8(data, mode: .cdma2000) // 0xbe
+CrcSwift.computeCrc16(data, mode: .modbus) // 0x71CA
+CrcSwift.computeCrc32(data, mode: .mpeg2) // 0x72E70589
 
-let crc32Mpeg2 = CrcSwift.computeCrc32(data, mode: .mpeg2)
-print(crc32Mpeg2) // 0x72E70589
+CrcSwift.computeCrc8(dataArray, mode: .cdma2000) // 0xbe
+CrcSwift.computeCrc16(dataArray, mode: .modbus) // 0x71CA
+CrcSwift.computeCrc32(dataArray, mode: .mpeg2) // 0x72E70589
 
 /* Or you can manually set your CRC variables */
+
 let manualCrc16 = computeCrc16(
     data,
     initialCrc: 0x0000,
@@ -100,7 +102,6 @@ let manualCrc16 = computeCrc16(
 ## TODO
 - Package instalation
 - Table based calculation
-- Different input types
 
 ## License
 

@@ -6,6 +6,8 @@
 //  Copyright © 2020 Ivan Elyoskin. All rights reserved.
 //
 
+import Foundation
+
 class CrcSwift {
     
     /**
@@ -46,6 +48,31 @@ class CrcSwift {
     }
     
     /**
+     * Compute CRC-8 for manual set of parameters
+     */
+    static func computeCrc8(
+        _ data: Data,
+        initialCrc: UInt8 = 0x00,
+        polynom: UInt8 = 0x07,
+        xor: UInt8 = 0x00,
+        refIn: Bool = false,
+        refOut: Bool = false
+    ) -> UInt8 {
+        let preparedData = DataHelper.convertDataToByteArray(data);
+        
+        return computeCrc8(
+            preparedData,
+            initialCrc: initialCrc,
+            polynom: polynom,
+            xor: xor,
+            refIn: refIn,
+            refOut: refOut
+        )
+    }
+    
+    
+    
+    /**
      * Compute CRC-16 for manual set of parameters
      */
     static func computeCrc16(
@@ -80,6 +107,29 @@ class CrcSwift {
         }
         
         return crc ^ xor
+    }
+    
+    /**
+     * Compute CRC-16 for manual set of parameters
+     */
+    static func computeCrc16(
+        _ data: Data,
+        initialCrc: UInt16 = 0x00,
+        polynom: UInt16 = 0x07,
+        xor: UInt16 = 0x00,
+        refIn: Bool = false,
+        refOut: Bool = false
+    ) -> UInt16 {
+        let preparedData = DataHelper.convertDataToByteArray(data);
+        
+        return computeCrc16(
+            preparedData,
+            initialCrc: initialCrc,
+            polynom: polynom,
+            xor: xor,
+            refIn: refIn,
+            refOut: refOut
+        )
     }
     
     /**
@@ -120,6 +170,29 @@ class CrcSwift {
     }
     
     /**
+     * Compute CRC-32 for manual set of parameters
+     */
+    static func computeCrc32(
+        _ data: Data,
+        initialCrc: UInt32 = 0x00,
+        polynom: UInt32 = 0x07,
+        xor: UInt32 = 0x00,
+        refIn: Bool = false,
+        refOut: Bool = false
+    ) -> UInt32 {
+        let preparedData = DataHelper.convertDataToByteArray(data);
+        
+        return computeCrc32(
+            preparedData,
+            initialCrc: initialCrc,
+            polynom: polynom,
+            xor: xor,
+            refIn: refIn,
+            refOut: refOut
+        )
+    }
+    
+    /**
      * Compute CRC-8 for mode preset
      */
     static func computeCrc8(_ data: [UInt8], mode: CRC8_TYPE = .defaultCrc) -> UInt8 {
@@ -133,6 +206,15 @@ class CrcSwift {
             refIn: config.refIn,
             refOut: config.refOut
         )
+    }
+    
+    /**
+     * Compute CRC-8 for mode preset
+     */
+    static func computeCrc8(_ data: Data, mode: CRC8_TYPE = .defaultCrc) -> UInt8 {
+        let preparedData = DataHelper.convertDataToByteArray(data);
+        
+        return computeCrc8(preparedData, mode: mode)
     }
     
     /**
@@ -152,6 +234,15 @@ class CrcSwift {
     }
     
     /**
+     * Compute CRC-16 for mode preset
+     */
+    static func computeCrc16(_ data: Data, mode: CRC16_TYPE = .ccittFalse) -> UInt16 {
+        let preparedData = DataHelper.convertDataToByteArray(data);
+        
+        return computeCrc16(preparedData, mode: mode)
+    }
+    
+    /**
      * Compute CRC-32 for mode preset
      */
     static func computeCrc32(_ data: [UInt8], mode: CRC32_TYPE = .defaultCrc) -> UInt32 {
@@ -165,5 +256,14 @@ class CrcSwift {
             refIn: config.refIn,
             refOut: config.refOut
         )
+    }
+    
+    /**
+     * Compute CRC-32 for mode preset
+     */
+    static func computeCrc32(_ data: Data, mode: CRC32_TYPE = .defaultCrc) -> UInt32 {
+        let preparedData = DataHelper.convertDataToByteArray(data);
+        
+        return computeCrc32(preparedData, mode: mode)
     }
 }
