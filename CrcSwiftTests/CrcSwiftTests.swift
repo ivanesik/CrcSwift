@@ -75,21 +75,21 @@ class CrcSwiftTests: XCTestCase {
     
     func testCrc8() {
         for check in caseCrc8 {
-            let crc = CrcSwift.calcCrc8(check.data, mode: check.mode)
+            let crc = CrcSwift.computeCrc8(check.data, mode: check.mode)
             XCTAssertEqual(crc, check.result)
         }
     }
     
     func testCrc16() {
         for check in caseCrc16 {
-            let crc = CrcSwift.calcCrc16(check.data, mode: check.mode)
+            let crc = CrcSwift.computeCrc16(check.data, mode: check.mode)
             XCTAssertEqual(crc, check.result)
         }
     }
     
     func testCrc32() {
         for check in caseCrc32 {
-            let crc = CrcSwift.calcCrc32(check.data, mode: check.mode)
+            let crc = CrcSwift.computeCrc32(check.data, mode: check.mode)
             XCTAssertEqual(crc, check.result)
         }
     }
