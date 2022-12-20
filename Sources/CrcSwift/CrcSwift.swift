@@ -1,15 +1,6 @@
-//
-//  CrcSwift.swift
-//  CrcSwift
-//
-//  Created by Ivan Elyoskin on 16.07.2018.
-//  Copyright © 2020 Ivan Elyoskin. All rights reserved.
-//
-
 import Foundation
 
 class CrcSwift {
-    
     /**
      * Compute CRC-8 for manual set of parameters
      */

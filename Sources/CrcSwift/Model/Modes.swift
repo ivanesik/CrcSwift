@@ -1,12 +1,9 @@
 //
-//  Enums.swift
-//  CrcSwift
+//  Modes.swift
+//  
 //
-//  Created by Ivan Elyoskin on 27.07.2018.
-//  Copyright © 2018 Ivan Elyoskin. All rights reserved.
+//  Created by Ivan Eleskin on 20.12.2022.
 //
-
-import Foundation
 
 enum MODE {
     case crc8
