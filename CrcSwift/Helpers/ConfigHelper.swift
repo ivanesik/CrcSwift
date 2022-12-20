@@ -90,7 +90,7 @@ class ConfigHelper {
         } else if mode == .teledisk {
             polynom = 0xa097
         }
-
+        
         if [.ccittFalse, .cdma2000, .genibus, .mcrf4xx, .usb, .modbus, .x25].contains(mode) {
             initial = 0xFFFF
         } else if [.arc, .buypass, .dectR, .dectX, .dnp, .en13757, .maxim, .t10dif, .teledisk, .kermit, .xmodem].contains(mode) {
@@ -124,14 +124,18 @@ class ConfigHelper {
     
     static func getCrc32VariablesByMode(mode: CRC32_TYPE) -> Config<UInt32> {
         var polynom: UInt32 = 0x04C11DB7
-        let initial: UInt32 = mode == .sata
-            ? 0x52325032
-            : [.posix, .q, .xfer].contains(mode)
-                ? 0x00000000
-                : 0xFFFFFFFF
+        var initial: UInt32 = 0xFFFFFFFF
         let xor: UInt32 = [.defaultCrc, .bzip2, .c, .d, .posix].contains(mode) ? 0xFFFFFFFF : 0x00000000
         let refIn: Bool = [.defaultCrc, .jamcrc, .c, .d].contains(mode)
         let refOut: Bool = [.defaultCrc, .jamcrc, .c, .d].contains(mode)
+        
+        if [.posix, .q, .xfer].contains(mode) {
+            initial = 0x00000000
+        } else if mode == .sata {
+            initial = 0x52325032
+        } else if [.defaultCrc, .bzip2, .c, .d, .mpeg2, .jamcrc].contains(mode) {
+            initial = 0xFFFFFFFF
+        }
         
         if [.defaultCrc, .bzip2, .mpeg2, .posix, .sata, .jamcrc].contains(mode) {
             polynom = 0x04C11DB7

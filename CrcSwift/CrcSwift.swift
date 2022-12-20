@@ -22,7 +22,7 @@ class CrcSwift {
         refOut: Bool = false
     ) -> UInt8 {
         var crc: UInt8 = initialCrc
-
+        
         for byte in data {
             if refIn {
                 crc = UInt8(DataHelper.reverseBits(byte)) ^ crc
@@ -39,11 +39,11 @@ class CrcSwift {
                 }
             }
         }
-
+        
         if refOut {
             crc = DataHelper.reverseBits(crc)
         }
-
+        
         return crc ^ xor
     }
     
@@ -101,7 +101,7 @@ class CrcSwift {
                 }
             }
         }
-
+        
         if refOut {
             crc = DataHelper.reverseBits(crc)
         }
@@ -144,7 +144,7 @@ class CrcSwift {
         refOut: Bool = true
     ) -> UInt32 {
         var crc: UInt32 = initialCrc
-
+        
         for byte in data {
             if refIn {
                 crc = (UInt32(DataHelper.reverseBits(byte)) << 24) ^ crc
@@ -161,11 +161,11 @@ class CrcSwift {
                 }
             }
         }
-
+        
         if refOut {
             crc = DataHelper.reverseBits(crc)
         }
-
+        
         return crc ^ xor
     }
     

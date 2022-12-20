@@ -20,7 +20,7 @@ class CrcSwiftTests: XCTestCase {
     
     // A401000AFF061101011300D3
     static let data: [UInt8] = [0xA4, 0x01, 0x00, 0x0A, 0xFF, 0x06, 0x11, 0x01, 0x01, 0x13, 0x00, 0xD3]
-
+    
     let caseCrc8: [Check<CRC8_TYPE, UInt8>] = [
         Check(mode: .defaultCrc, data: data, result: 0x78),
         Check(mode: .cdma2000, data: data, result: 0xbe),
