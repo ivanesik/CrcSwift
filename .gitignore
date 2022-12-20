@@ -1,0 +1,8 @@
+.DS_Store
+.Trashes
+*.swp
+
+xcuserdata
+profile
+
+.idea/

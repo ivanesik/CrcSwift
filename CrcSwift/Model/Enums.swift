@@ -2,8 +2,8 @@
 //  Enums.swift
 //  CrcSwift
 //
-//  Created by Admin on 27.07.2018.
-//  Copyright © 2018 Ivan Elioskin. All rights reserved.
+//  Created by Ivan Elyoskin on 27.07.2018.
+//  Copyright © 2018 Ivan Elyoskin. All rights reserved.
 //
 
 import Foundation
@@ -15,7 +15,7 @@ enum MODE {
 }
 
 enum CRC8_TYPE {
-    case def
+    case defaultCrc
     case cdma2000
     case darc
     case dvbS2
@@ -54,12 +54,13 @@ enum CRC16_TYPE {
 }
 
 enum CRC32_TYPE {
-    case def
+    case defaultCrc
     case bzip2
     case c
     case d
     case mpeg2
     case posix
+    case sata
     case q
     case jamcrc
     case xfer
