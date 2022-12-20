@@ -1,12 +1,5 @@
-//
-//  CrcSwiftTests.swift
-//  CrcSwiftTests
-//
-//  Created by Ivan Elyoskin on 16.07.2018.
-//  Copyright © 2020 Ivan Elyoskin. All rights reserved.
-//
-
 import XCTest
+@testable import CrcSwift
 
 struct Check<T, Y> {
     var mode: T
@@ -14,12 +7,12 @@ struct Check<T, Y> {
     var result: Y
 }
 
-@testable import CrcSwift
-
-class CrcSwiftTests: XCTestCase {
+final class CrcSwiftTests: XCTestCase {
     
-    // A401000AFF061101011300D3
-    static let data: [UInt8] = [0xA4, 0x01, 0x00, 0x0A, 0xFF, 0x06, 0x11, 0x01, 0x01, 0x13, 0x00, 0xD3]
+    /** A401000AFF061101011300D3 */
+    static let data: [UInt8] = [
+        0xA4, 0x01, 0x00, 0x0A, 0xFF, 0x06, 0x11, 0x01, 0x01, 0x13, 0x00, 0xD3
+    ]
     
     let caseCrc8: [Check<CRC8_TYPE, UInt8>] = [
         Check(mode: .defaultCrc, data: data, result: 0x78),

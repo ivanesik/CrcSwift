@@ -1,12 +1,9 @@
 //
-//  Config.swift
-//  CrcSwift
+//  File.swift
+//  
 //
 //  Created by Ivan Eleskin on 20.12.2022.
-//  Copyright © 2022 Ivan Elioskin. All rights reserved.
 //
-
-import Foundation
 
 struct Config<T> {
     var initialCrc: T
@@ -15,7 +12,6 @@ struct Config<T> {
     var refIn: Bool
     var refOut: Bool
 }
-
 
 class ConfigHelper {
     static func getCrc8VariablesByMode(mode: CRC8_TYPE) -> Config<UInt8> {
