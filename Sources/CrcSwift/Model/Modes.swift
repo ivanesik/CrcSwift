@@ -5,13 +5,7 @@
 //  Created by Ivan Eleskin on 20.12.2022.
 //
 
-enum MODE {
-    case crc8
-    case crc16
-    case crc32
-}
-
-enum CRC8_TYPE {
+public enum CRC8_TYPE {
     case defaultCrc
     case cdma2000
     case darc
@@ -24,7 +18,7 @@ enum CRC8_TYPE {
     case wcdma
 }
 
-enum CRC16_TYPE {
+public enum CRC16_TYPE {
     case ccittFalse
     case arc
     case augCcitt
@@ -50,7 +44,7 @@ enum CRC16_TYPE {
     case xmodem
 }
 
-enum CRC32_TYPE {
+public enum CRC32_TYPE {
     case defaultCrc
     case bzip2
     case c
