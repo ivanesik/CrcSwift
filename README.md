@@ -102,6 +102,7 @@ let manualCrc16 = computeCrc16(
 ## TODO
 - Package instalation
 - Table based calculation
+- Tests in CI
 
 ## License
 
