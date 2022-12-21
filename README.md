@@ -1,20 +1,59 @@
 # CrcSwift
-In development statement
 
-
-[![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg)](https://swift.org)
+[![Swift](https://img.shields.io/badge/Swift->5.0-orange.svg)](https://swift.org)
+[![Swift Package Manager](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)
 [![Xcode](https://img.shields.io/badge/Xcode-14.0-blue.svg)](https://developer.apple.com/xcode)
 [![MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
 ____
 
 ## Summary
 
-Helper to easily generate crc checksum in Swift.
+Helper to easily generate CRC checksum in Swift.
 Validated by http://crccalc.com
+
+## Installation
+
+### Swift Package Manager
+
+Once you have your Swift package set up, adding CrcSwift as a dependency is as easy as adding it to the dependencies value of your Package.swift.
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/ivanesik/CrcSwift.git", from: "0.0.2")
+]
+```
+
+## Usage
+
+```swift
+// A401000AFF061101011300D3
+var dataArray: [UInt8] = [0xA4, 0x01, 0x00, 0x0A, 0xFF, 0x06, 0x11, 0x01, 0x01, 0x13, 0x00, 0xD3]
+var data = Data(dataArray)
+
+// With Mode variables presets and `[UInt8]` input
+CrcSwift.computeCrc8(data, mode: .cdma2000) // 0xbe
+CrcSwift.computeCrc16(data, mode: .modbus) // 0x71CA
+CrcSwift.computeCrc32(data, mode: .mpeg2) // 0x72E70589
+
+// With Mode variables presets and `Data` input
+CrcSwift.computeCrc8(dataArray, mode: .cdma2000) // 0xbe
+CrcSwift.computeCrc16(dataArray, mode: .modbus) // 0x71CA
+CrcSwift.computeCrc32(dataArray, mode: .mpeg2) // 0x72E70589
+
+// Or you can manually set your CRC variables
+let manualCrc16 = computeCrc16(
+    data,
+    initialCrc: 0x0000,
+    polynomial: 0x8005,
+    xor: 0x0000,
+    refIn: true,
+    refOut: true
+)
+```
 
 ## Features
 
-CRC-8, CRC-16, CRC-32 calculation with manual setting and preset of the most popular sets.
+CRC-8, CRC-16, CRC-32 calculation with manual setting and most popular variables presets.
 
 CRC-8:
 - default
@@ -65,44 +104,10 @@ CRC-32:
 - jamcrc
 - xfer
 
-## Installation
-
-Copy code from repository and manually add into your project.
-Package installation in plans.
-
-## Usage
-
-Crc generation
-```swift
-// A401000AFF061101011300D3
-var dataArray: [UInt8] = [0xA4, 0x01, 0x00, 0x0A, 0xFF, 0x06, 0x11, 0x01, 0x01, 0x13, 0x00, 0xD3]
-var data = Data(dataArray)
-
-
-CrcSwift.computeCrc8(data, mode: .cdma2000) // 0xbe
-CrcSwift.computeCrc16(data, mode: .modbus) // 0x71CA
-CrcSwift.computeCrc32(data, mode: .mpeg2) // 0x72E70589
-
-CrcSwift.computeCrc8(dataArray, mode: .cdma2000) // 0xbe
-CrcSwift.computeCrc16(dataArray, mode: .modbus) // 0x71CA
-CrcSwift.computeCrc32(dataArray, mode: .mpeg2) // 0x72E70589
-
-/* Or you can manually set your CRC variables */
-
-let manualCrc16 = computeCrc16(
-    data,
-    initialCrc: 0x0000,
-    polynomial: 0x8005,
-    xor: 0x0000,
-    refIn: true,
-    refOut: true
-)
-```
-
 ## TODO
-- Package instalation
 - Table based calculation
 - Tests in CI
+- CocoaPods
 
 ## License
 
