@@ -2,6 +2,7 @@
 
 [![Swift](https://img.shields.io/badge/Swift->5.0-orange.svg)](https://swift.org)
 [![Swift Package Manager](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/CrcSwift.svg?style=flat-square)](https://img.shields.io/cocoapods/v/CrcSwift.svg)
 [![Xcode](https://img.shields.io/badge/Xcode-14.0-blue.svg)](https://developer.apple.com/xcode)
 [![MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
 ____
@@ -21,6 +22,14 @@ Once you have your Swift package set up, adding CrcSwift as a dependency is as e
 dependencies: [
     .package(url: "https://github.com/ivanesik/CrcSwift.git", from: "0.0.3")
 ]
+```
+
+### CocoaPods
+
+To integrate CrcSwift into your Xcode project using CocoaPods, specify it in your Podfile:
+
+```ruby
+pod 'CrcSwift', '~> 0.0.3'
 ```
 
 ## Usage
